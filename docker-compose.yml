@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+    fpm:
+        restart: always
+        image: qii404/phalcon-docker-fpm:latest
+        volumes:
+        # change to your code path！！！！！！
+        #- /path-to-your-code-here:/var/www/html
+        - ./:/var/www/html
+
+    nginx:
+        restart: always
+        image: nginx:latest
+        depends_on:
+        - fpm
+        links:
+        - fpm:fpm
+        volumes:
+        - ./nginx/conf.d:/etc/nginx/conf.d
+        volumes_from:
+        - fpm
+        ports:
+        - 8088:80
+
+

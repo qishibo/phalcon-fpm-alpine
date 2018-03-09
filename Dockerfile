@@ -72,4 +72,3 @@ RUN apk add curl-dev\
     && rm ${PWD}/yar.tar.gz\
     && mv ${PWD}/yar-yar-${YAR_VERSION} /usr/src/php/ext/yar\
     && docker-php-ext-install -j $(nproc) yar
-

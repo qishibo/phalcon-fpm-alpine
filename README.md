@@ -14,7 +14,7 @@
 # pull image
 docker pull qii404/phalcon-docker-fpm
 
-# vi docker-compose.yml, change your code path to volumn
+# vi docker-compose.yml, change your code path to volumn. By default there is only a inedx.php in /var/www/html
 # /path-to-yout-code:/var/www/html
 
 # start the container
