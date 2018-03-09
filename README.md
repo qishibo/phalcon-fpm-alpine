@@ -1,15 +1,13 @@
 # Phalcon fpm environment running in docker with alpine
 
-> total size is only 290MB
+> Based on image php:7.2-fpm-alpine3.7, total size is only 290MB
 
 
-php version 7.2.3
+- PHP version 7.2.3
+- Alpine version 3.7
+- Phalcon version 3.3.1
 
-alpine version 3.7
-
-phalcon version 3.3.1
-
-build php extensions
+Build php extensions
 
 ```
 Core
