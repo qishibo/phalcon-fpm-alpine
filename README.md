@@ -15,14 +15,15 @@
 docker pull qii404/phalcon-docker-fpm
 
 # vi docker-compose.yml, change your code path to volumn. By default there is only a inedx.php in /var/www/html
-# /path-to-yout-code:/var/www/html
+/path-to-yout-code:/var/www/html
 
-# start the container
+# start the container, docker-compose must be installed
 docker-compose up
 
-# view localhost:8088
+# view localhost:8088, you will see phpinfo
 ```
 
+![phpinfo](http://7xsudm.com1.z0.glb.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20180309174642.png)
 
 
 Build php extensions
