@@ -7,6 +7,24 @@
 - Alpine version 3.7
 - Phalcon version 3.3.1
 
+
+## Usage
+
+```bash
+# pull image
+docker pull qii404/phalcon-docker-fpm
+
+# vi docker-compose.yml, change your code path to volumn
+# /path-to-yout-code:/var/www/html
+
+# start the container
+docker-compose up
+
+# view localhost:8088
+```
+
+
+
 Build php extensions
 
 ```
