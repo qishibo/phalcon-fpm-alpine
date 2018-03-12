@@ -3,7 +3,7 @@ version: '2'
 services:
     fpm:
         restart: always
-        image: qii404/phalcon-docker-fpm:latest
+        image: qii404/phalcon-fpm-alpine:latest
         volumes:
         # change to your code path！！！！！！
         #- /path-to-your-code-here:/var/www/html
