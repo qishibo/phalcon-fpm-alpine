@@ -1,4 +1,4 @@
-# Phalcon Fpm Env Running In Docker With Php7.2 Based On Apline
+# Phalcon Fpm Env Running In Docker With PHP7.2 Based On Apline
 
 > Based on image php:7.2-fpm-alpine3.7, total size is only 290MB, and compressed size is 69 MB.
 
@@ -27,7 +27,7 @@ docker-compose up -d
 ```
 
 
-## Builded Php Extensions
+## Builded PHP Extensions
 
 ```
 Core
