@@ -1,0 +1,101 @@
+# another dockerfile for building images
+FROM alpine:3.7
+
+RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main/' > /etc/apk/repositories; \
+    echo 'http://mirrors.aliyun.com/alpine/latest-stable/community/' >> /etc/apk/repositories; \
+    apk update;
+
+# www folder
+RUN mkdir -p /var/www/html;
+
+
+# install php && extensions
+RUN apk add php7 \
+            php7-ctype \
+            php7-curl \
+            php7-dom \
+            php7-exif \
+            php7-fileinfo \
+            php7-gd \
+            php7-gettext \
+            php7-iconv \
+            php7-imagick \
+            php7-json \
+            php7-mbstring \
+            php7-mcrypt \
+            php7-memcached \
+            php7-mysqli \
+            php7-mysqlnd \
+            php7-opcache \
+            php7-openssl \
+            php7-pcntl \
+            php7-pdo \
+            php7-pdo_mysql \
+            php7-pdo_pgsql \
+            php7-pdo_sqlite \
+            php7-posix \
+            php7-redis \
+            php7-session \
+            php7-simplexml \
+            php7-sockets \
+            php7-sqlite3 \
+            php7-xml \
+            php7-xmlwriter \
+            php7-zlib;
+
+
+# install php-fpm
+RUN apk add php7-fpm
+
+# install make tools
+RUN apk add curl-dev \
+            php7-dev \
+            g++ \
+            curl-dev \
+            make \
+            curl
+
+# code source
+RUN mkdir -p /source
+WORKDIR /source
+
+#------------------------------------------------------
+# install msgpack for yar
+ENV MSGPACK_VERSION 2.0.2
+
+RUN curl -L -o ${PWD}/msgpack.tar.gz https://github.com/msgpack/msgpack-php/archive/msgpack-${MSGPACK_VERSION}.tar.gz \
+    && tar xvf ${PWD}/msgpack.tar.gz\
+    && cd ${PWD}/msgpack-php-msgpack-${MSGPACK_VERSION}\
+    && phpize && ./configure && make && make install\
+    && echo 'extension=msgpack.so' > /etc/php7/conf.d/msgpack.ini
+
+#------------------------------------------------------
+# install yar
+ENV YAR_VERSION 2.0.4
+
+RUN curl -L -o ${PWD}/yar.tar.gz https://github.com/laruence/yar/archive/yar-${YAR_VERSION}.tar.gz \
+    && tar xvf ${PWD}/yar.tar.gz\
+    && cd ${PWD}/yar-yar-${YAR_VERSION}\
+    && phpize && ./configure && make && make install\
+    && echo 'extension=yar.so' > /etc/php7/conf.d/yar.ini
+
+#------------------------------------------------------
+# install php phalcon extension
+ENV PHALCON_VERSION=3.3.1
+
+RUN curl -L -o ${PWD}/phalcon.tar.gz https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz\
+    && tar xzf ${PWD}/phalcon.tar.gz\
+    && cd ${PWD}/cphalcon-${PHALCON_VERSION}/build\
+    && sh install\
+    && echo 'extension=phalcon.so' > /etc/php7/conf.d/phalcon.ini
+
+
+# rm codes
+RUN rm -rf /source
+
+
+WORKDIR /var/www/html
+EXPOSE 9000
+
+CMD ["php-fpm7", "-F"]
+
