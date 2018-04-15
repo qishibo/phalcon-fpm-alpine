@@ -73,4 +73,12 @@ RUN apk add curl-dev\
     && mv ${PWD}/yar-yar-${YAR_VERSION} /usr/src/php/ext/yar\
     && docker-php-ext-install -j $(nproc) yar
 
+
+# health check script
+COPY health_check.sh /tmp
+HEALTHCHECK --interval=5s --timeout=2s --retries=3 CMD /bin/sh /tmp/health_check.sh
+
+# copy php files
+COPY ./ /var/www/html
+
 # docker build -t xxx:xxx .
