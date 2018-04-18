@@ -78,6 +78,13 @@ RUN apk add curl-dev\
 COPY health_check.sh /tmp
 HEALTHCHECK --interval=5s --timeout=2s --retries=3 CMD /bin/sh /tmp/health_check.sh
 
+# copy config files
+COPY php/php.ini /usr/local/etc/php/
+COPY php/www.conf /usr/local/etc/php-fpm.d/
+
+# log path write privilege
+RUN chmod o+w /var/log
+
 # copy php files
 COPY ./ /var/www/html
 
