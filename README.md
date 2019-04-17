@@ -12,12 +12,17 @@
 - Memcached 3.0.3
 - Msgpack 2.0.2
 
+## Image
+
+`docker pull qii404/phalcon-fpm-alpine`
+
 
 ## Usage
 
 ```bash
-# pull image
-docker pull qii404/phalcon-docker-fpm
+# clone code
+git clone https://github.com/qishibo/phalcon-fpm-alpine.git
+cd phalcon-fpm-alpine
 
 # [optional] edit docker-compose.yml, volume your code path to /var/www/html
 # By default there is only a index.php
