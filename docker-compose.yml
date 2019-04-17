@@ -5,8 +5,8 @@ services:
         restart: always
         image: qii404/phalcon-fpm-alpine:latest
         volumes:
-        # change to your code path！！！！！！
-        #- /path-to-your-code-here:/var/www/html
+        # change to your code path if needed
+        # path-to-your-code:/var/www/html
         - ./:/var/www/html
 
     nginx:

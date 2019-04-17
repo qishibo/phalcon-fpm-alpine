@@ -1,13 +1,16 @@
-# Phalcon Fpm Env Running In Docker With PHP7.2 Based On Apline
+# Phalcon FPM Env Running In Docker Based On Apline
 
-> Based on image php:7.2-fpm-alpine3.7, total size is only 290MB, and compressed size is 69 MB.
+> Based on image php:7.2.5-fpm-alpine3.7, total size is only 95MB.
 
 
 ## Version
 
-- PHP version 7.2.3
-- Alpine version 3.7
-- Phalcon version 3.3.1
+- PHP 7.2.5
+- Alpine 3.7
+- Phalcon 3.3.1
+- Redis 3.1.2
+- Memcached 3.0.3
+- Msgpack 2.0.2
 
 
 ## Usage
@@ -17,60 +20,13 @@
 docker pull qii404/phalcon-docker-fpm
 
 # [optional] edit docker-compose.yml, volume your code path to /var/www/html
-# By default there is only a inedx.php if you not volume to docker
-# /path-to-your-code:/var/www/html
+# By default there is only a index.php
+# path-to-your-code:/var/www/html
 
-# start the container, docker-compose must be installed
+# start the container, docker-compose is recommend
 docker-compose up -d
 
 # view localhost:8088, you will see phpinfo
 ```
 
-
-## Builded PHP Extensions
-
-```
-Core
-ctype
-curl
-date
-dom
-fileinfo
-filter
-ftp
-gd
-hash
-iconv
-json
-libxml
-mbstring
-memcached
-msgpack
-mysqli
-mysqlnd
-openssl
-pcre
-PDO
-pdo_mysql
-pdo_sqlite
-phalcon
-Phar
-posix
-readline
-redis
-Reflection
-session
-SimpleXML
-sodium
-SPL
-sqlite3
-standard
-tokenizer
-xml
-xmlreader
-xmlwriter
-yar
-zlib
-```
-
-![phpinfo](http://imgqn.qii404.me/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20180309174642.png)
+![phpinfo](https://ws1.sinaimg.cn/large/71405cably1g25gv6xsf4j20qh0ph77y.jpg)
